@@ -12,7 +12,7 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 		cout << "You are moving off the board!" << endl;
 		return false;
 	}
-	if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
+	if(b->getPiece(row2, col2).getOwner() == this->getOwner()){
 		cout << "You currently occupy this space." << endl;
 		return false;
 	} 
@@ -37,13 +37,13 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z) != NULL){
+			if(b->isOccupied(i, z) == true){
 				return false;
 			}
 			i--;
 			z--;
+			}
 		}
-	}
 
 	else if((row2 > row2) && (col2 < col1)) { //downwards left
 		int i = row1;
@@ -53,7 +53,7 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z)){
+			if(b->isOccupied(i, z)){
 				return false;
 			}
 			i++;
@@ -69,7 +69,7 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z)){
+			if(b->isOccupied(i,z)){
 				return false;
 			}
 			i--;
@@ -85,7 +85,7 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z)){
+			if(b->isOccupied(i, z)){
 				return false;
 			}
 			i++;
