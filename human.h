@@ -14,6 +14,6 @@ class Human : public Player {
 	bool isCheckmate();
 //	bool castle();	
 	bool movePiece(int row1, int col1, int row2, int col2);	
-}
+};
 
 #endif
