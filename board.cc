@@ -38,32 +38,32 @@ void Board::init(string filename, Controller *gameCtrl) {
 					//Rooks
 					if (j == 0 || j == 7) {
 						theBoard[i][j] = new Rook(i, j, player, this);
-						cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+						cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 					}
 					//Knights
 					else if (j == 1 || j == 6) {
 						theBoard[i][j] = new Knight(i, j, player, this);
-						cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+						cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 					}
 					//bishops
 					else if (j == 2 || j == 5) {
 						theBoard[i][j] = new Bishop(i, j, player, this);
-						cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+						cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 					}
 					//Queen
 					else if (j == 3) {
 						theBoard[i][j] = new Queen(i, j, player, this);
-						cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+						cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 					} else {
 						//King
 						theBoard[i][j] = new King(i, j, player, this);
-						cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+						cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 					}
 				}
 				//PAWNS for PLAYERS
 				else if (i == 1 || i == 6)	{
 					theBoard[i][j] = new Pawn(i, j, player, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				} else {
 					//Empty Space
 					theBoard[i][j] = NULL;
@@ -87,57 +87,57 @@ void Board::init(string filename, Controller *gameCtrl) {
 				//White Rook
 				if (c == 'R') {
 					theBoard[i][j] = new Rook(i, j, 0, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				//Black Rook
 				else if (c == 'r') {
 					theBoard[i][j] = new Rook(i, j, 1, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				//Whtie Knight
 				else if (c == 'N') {
 					theBoard[i][j] = new Knight(i, j, 0, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				else if (c == 'n') {
 					theBoard[i][j] = new Knight(i, j, 1, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				//White Bishop
 				else if (c == 'B') {
 					theBoard[i][j] = new Bishop(i, j, 0, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				//Black Bishop
 				else if (c == 'b') {
 					theBoard[i][j] = new Bishop(i, j, 1, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				//White Queen
 				else if (c == 'Q') {
 					theBoard[i][j] = new Queen(i, j, 0, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				else if (c == 'q') {
 					theBoard[i][j] = new Queen(i, j, 1, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				//White KIng
 				else if (c == 'K') {
 					theBoard[i][j] = new King(i, j, 0, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				else if (c == 'k') {
 					theBoard[i][j] = new King(i, j, 1, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				else if (c == 'P') {
 					theBoard[i][j] = new Pawn(i, j, 0, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				}
 				else if (c == 'p') {
 					theBoard[i][j] = new Pawn(i, j, 1, this);
-					cnotify(-1, -1, i, j, theBoard[i][j].pieceID());
+					cnotify(-1, -1, i, j, theBoard[i][j]->pieceID());
 				} else {
 					theBoard[i][j] = NULL;
 				}
@@ -164,57 +164,57 @@ void Board::addPiece(int row, int col, char p) {
 	//White Rook
 	if (p == 'R') {
 		theBoard[row][col] = new Rook(row, col, 0, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	//Black Rook
 	else if (p == 'r') {
 		theBoard[row][col] = new Rook(row, col, 1, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	//Whtie Knight
 	else if (p == 'N') {
 		theBoard[row][col] = new Knight(row, col, 0, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	else if (p == 'n') {
 		theBoard[row][col] = new Knight(row, col, 1, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	//White Bishop
 	else if (p == 'B') {
 		theBoard[row][col] = new Bishop(row, col, 0, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	//Black Bishop
 	else if (p == 'b') {
 		theBoard[row][col] = new Bishop(row, col, 1, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	//White Queen
 	else if (p == 'Q') {
 		theBoard[row][col] = new Queen(row, col, 0, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	else if (p == 'q') {
 		theBoard[row][col] = new Queen(row, col, 1, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	//White KIng
 	else if (p == 'K') {
 		theBoard[row][col] = new King(row, col, 0, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	else if (p == 'k') {
 		theBoard[row][col] = new King(row, col, 1, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	else if (p == 'P') {
 		theBoard[row][col] = new Pawn(row, col, 0, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	else if (p == 'p') {
 		theBoard[row][col] = new Pawn(row, col, 1, this);
-		cnotify(-1, -1, row, col, theBoard[row][col].pieceID());
+		cnotify(-1, -1, row, col, theBoard[row][col]->pieceID());
 	}
 	else {
 		theBoard[row][col] = NULL;
@@ -244,12 +244,12 @@ void Board::updateMove(int oldRow, int oldCol, int newRow, int newCol) {
 	theBoard[newRow][newCol] = theBoard[oldRow][oldCol];
 	//delete theBoard[oldRow][oldCol];
 	theBoard[oldRow][oldCol] = NULL;
-	cnotify(oldRow, oldCol, newRow, newCol, theBoard[newRow][newCol].pieceID());
+	cnotify(oldRow, oldCol, newRow, newCol, theBoard[newRow][newCol]->pieceID());
 }
 
 bool Board::validPawns() {
 	for (int col = 0; col < gridsize; ++col) {
-		if (theBoard[0][col].pieceID() == 'p' ||  theBoard[0][col].pieceID() == 'P' || theBoard[7][col].pieceID() == 'p' || theBoard[7][col].pieceID() == 'P') {
+		if (theBoard[0][col]->pieceID() == 'p' ||  theBoard[0][col]->pieceID() == 'P' || theBoard[7][col]->pieceID() == 'p' || theBoard[7][col]->pieceID() == 'P') {
 			return false;
 		}
 	}
@@ -280,7 +280,7 @@ Piece* Board::getPiece(int row, int col) {
 }
 
 char Board::getPieceID(int row, int col) {
-	return theBoard[row][col].pieceID();
+	return theBoard[row][col]->pieceID();
 }
 
 bool Board::isOccupied(int row, int col) {
