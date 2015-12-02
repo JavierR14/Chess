@@ -5,8 +5,12 @@
 #include "board.h"
 #include "view.h"
 #include "player.h"
+#include "human.h"
+#include "computer.h"
 
 class Player;
+class Human;
+class Computer;
 class Board;
 
 class Controller {

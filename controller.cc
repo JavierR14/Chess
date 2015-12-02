@@ -224,11 +224,13 @@ void Controller::playGame(string filename) {
 			ingame = true;
 			betweengame = false;
 			if (board->getCurrentPlayer() == "P1" && p1->isHuman()== false) {
-				p1->movePiece();
+				Computer* pc = dynamic_cast<Computer*>(p1);
+				pc->movePiece();
 				cout << "Computer has moved." << endl;
 			}
 			else if (board->getCurrentPlayer() == "P2" && p2->isHuman() == false) {
-				p2->movePiece();
+				Computer* pc = dynamic_cast<Computer*>(p2);
+				pc->movePiece();
 				cout << "Computer has moved." << endl;
 			}
 			else {
@@ -256,7 +258,9 @@ void Controller::playGame(string filename) {
 						int newCol = getCol(pos2);
 				}
 				if (board->getCurrentPlayer() == "P1") {
-					while (p1->movePiece(oldRow,oldCol,newRow,newCol) != true) {
+					Human* hm = dynamic_cast<Human*>(p1);
+					//pc->movePiece();
+					while (hm->movePiece(oldRow,oldCol,newRow,newCol) != true) {
 						cout << "Retry with your piece." << endl;
 						cin >> pos1;
 						cin >> pos2;
@@ -267,7 +271,9 @@ void Controller::playGame(string filename) {
 					}
 					cout << "Player 1 has moved." << endl;
 				} else {
-					while (p2->movePiece(oldRow,oldCol,newRow,newCol) != true) {
+					Human* hm = dynamic_cast<Human*>(p1);
+					//hm->movePiece();
+					while (hm->movePiece(oldRow,oldCol,newRow,newCol) != true) {
 						cout << "Retry with your piece." << endl;
 						cin >> pos1;
 						cin >> pos2;
