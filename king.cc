@@ -6,7 +6,7 @@
 
 using namespace std;
 
-King::King(int row, int col, int owner, Board *b): row(row), col(col), owner(owner), b(b) {}
+King::King(int row, int col, int owner, Board *b): Piece(row,col,owner,b) {}
 
 bool King::checkMove(int row1, int col1, int row2, int col2){
 	if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
@@ -43,5 +43,6 @@ char King::pieceID(){
 		return 'K';
 	} else {
 		return 'k';
+	}
 }
 

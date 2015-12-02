@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Knight::Knight(int row, int col, int owner, Board *b): row(row), col(col), owner(owner), b(b) {}
+Knight::Knight(int row, int col, int owner, Board *b): Piece(row, col,owner,b) {}
 
 bool Knight::checkMove(int row1, int col1, int row2, int col2){
 	if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){

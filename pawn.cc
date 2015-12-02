@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Pawn::Pawn(int row, int col, int owner, Board *b): row(row), col(col), owner(owner), b(b) {
+Pawn::Pawn(int row, int col, int owner, Board *b): Piece(row,col,owner,b) {
 	this->firstmove=true;
 }
 

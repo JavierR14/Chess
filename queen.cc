@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Queen::Queen(int row, int col, int owner, Board *b): row(row), col(col), owner(owner), b(b) {}
+Queen::Queen(int row, int col, int owner, Board *b): Piece(row, col, owner, b) {}
 
 bool Queen::checkMove(int row1, int col1, int row2, int col2){
 	if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
@@ -23,7 +23,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 		if(col1 > col2){
 			for(int i=col1-1; i > col2; i--){
 				if(b->getPiece(row2, i)){
-					cout << "Queen cannot jumo over pieces." << endl;
+					cout << "Queen cannot jump over pieces." << endl;
 					return false;
 				}
 			}

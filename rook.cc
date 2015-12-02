@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Rook::Rook(int row, int col,int owner, Board *b): row(row), col(col), owner(owner), b(b) {}
+Rook::Rook(int row, int col,int owner, Board *b): Piece(row,col,owner,b) {}
 
 bool Rook::checkMove(int row1, int col1, int row2, int col2){
 	if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
@@ -62,7 +62,7 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 }
 
 bool Rook::makeMove(int row1, int col1, int row2, int col2){
-	if(checkMove(int row2, int col1, int row2, int col2)){
+	if(checkMove(row2, col1, row2, col2)){
 		this->row = row2;
 		this->col = col2;
 		return true;
