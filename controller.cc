@@ -211,7 +211,7 @@ void Controller::playGame(string filename) {
 					cout << "It is now " << board->getCurrentPlayer() << "'s turn" << endl;
 				}
 				else if (setupcmd == "done") {
-					if (p1->getKings() == 1 && p1->isCheck() == false && p2->getKings() == 1 && p2->isCheck() == false && board->validPawns() == true) {
+					if (p1->getKings() == 1 && p1->isCheck(p2->kingRow, p2->kingCol) == false && p2->getKings() == 1 && p2->isCheck(p2->kingRow, p2->kingCol) == false && board->validPawns() == true) {
 						break;
 					} else {
 						cout << "This is not a valid board. Please fix before exiting setup." << endl;
