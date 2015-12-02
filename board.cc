@@ -152,7 +152,7 @@ bool Board::removePiece(int row, int col) {
 	if (theBoard[row][col] != NULL) {
 		delete theBoard[row][col];
 		theBoard[row][col] = NULL;
-		cnotify(row, col, -1, -1, '');
+		cnotify(row, col, -1, -1, 'a');
 		return true;
 	}
 	return false;
@@ -276,7 +276,7 @@ void Board::setCurrentPlayer(char colour) {
 }
 
 Piece* Board::getPiece(int row, int col) {
-	return &theBoard[row][col];
+	return theBoard[row][col];
 }
 
 char Board::getPieceID(int row, int col) {
