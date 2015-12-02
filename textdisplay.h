@@ -10,6 +10,6 @@ public:
 	~TextDisplay();
 	virtual void notify(int oldRow, int oldCol, int newRow, int newCol, char c);
 	virtual void printBoard(std::ostream &out) const;
-	virtual void printScore(int p1Score, int p2Score) const;
+	virtual void printScore(float p1Score, float p2Score) const;
 };
 #endif

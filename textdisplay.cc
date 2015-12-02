@@ -4,10 +4,10 @@
 using namespace std;
 
 TextDisplay::TextDisplay(int size): View(size) {
-	bDisplay = new char*[size];
-	for (int i=0; i < size; i++) {
-		bDisplay[i] = new char[size];
-		for (int j=0; j < size; j++) {
+	bDisplay = new char*[bSize];
+	for (int i=0; i < bSize; i++) {
+		bDisplay[i] = new char[bSize];
+		for (int j=0; j < bSize; j++) {
 			//even numbered rows are white (odd in game)
 			if (i%2 == 0) {
 				if (j%2 == 0) {
@@ -46,21 +46,21 @@ void TextDisplay::notify(int oldRow, int oldCol, int newRow, int newCol, char c)
 	}
 	//set old position back to white or black tile
 	if (oldRow % 2 == 0) {
-		if (oldCol%2 == 0) }{
-			bDisplay[oldRow][oldCol] = ' '
+		if (oldCol%2 == 0) {
+			bDisplay[oldRow][oldCol] = ' ';
 		} else {
-			bDisplay[oldRow][oldCol] = '_'
+			bDisplay[oldRow][oldCol] = '_';
 		}
 	} else {
 		if (oldCol%2 == 0) {
-			bDisplay[oldRow][oldCol] = '_'
+			bDisplay[oldRow][oldCol] = '_';
 		} else {
-			bDisplay[oldRow][oldCol] = ' '
+			bDisplay[oldRow][oldCol] = ' ';
 		}
 	}
 }
 
-void TextDisplay::printBoard(ostream &out) {
+void TextDisplay::printBoard(ostream &out) const {
 	for (int i=0; i < this->bSize; ++i) {
 		for (int j=0; j < this->bSize; ++j) {
 			out << bDisplay[i][j];
@@ -69,7 +69,7 @@ void TextDisplay::printBoard(ostream &out) {
 	}
 }
 
-void TextDisplay::printScore(float p1Score; float p2Score) {
+void TextDisplay::printScore(float p1Score, float p2Score) const {
 	cout << "Final Score:" << endl;
 	cout << "White: " << p1Score << endl;
 	cout << "Black: " << p2Score << endl;
