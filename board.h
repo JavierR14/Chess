@@ -32,6 +32,7 @@ public:
 	void setCurrentPlayer(char colour);
 	Piece getPiece(int row, int col);
 	char getPieceID(int row, int col);
+	bool isOccupied (int row, int col);
 };
 
 #endif

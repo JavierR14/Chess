@@ -279,6 +279,13 @@ Piece* Board::getPiece(int row, int col) {
 	return &theBoard[row][col];
 }
 
-char getPieceID(int row, int col) {
+char Board::getPieceID(int row, int col) {
 	return theBoard[row][col].pieceID();
+}
+
+bool Board::isOccupied(int row, int col) {
+	if (theBoard[row][col] != NULL) {
+		return false;
+	}
+	return true;
 }
