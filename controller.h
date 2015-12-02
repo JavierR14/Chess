@@ -12,6 +12,7 @@ class Player;
 class Human;
 class Computer;
 class Board;
+class View;
 
 class Controller {
 	View *td;
