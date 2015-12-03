@@ -146,6 +146,7 @@ void Controller::playGame(string filename) {
 		//SETUP MODE---------------------------------------------------------------------------------------
 		//betweengame will be handled in the askPlayAgain()
 		else if (cmd == "setup" && ingame == false || cmd == "setup" && betweengame == true) {
+			cout << "Setup Mode" << endl;
 			string setupcmd;
 			char piece;
 			string tile; 
@@ -285,14 +286,16 @@ void Controller::playGame(string filename) {
 					cout << "STUFF" << endl;
 					Human* hm= dynamic_cast<Human*>(p2);
 					//hm->movePiece();
-					while (hm->movePiece(oldRow,oldCol,newRow,newCol) != true) {
+					bool moveCheck = hm->movePiece(oldRow,oldCol,newRow,newCol);
+					while (moveCheck != true) {
 						cout << "Retry with your piece." << endl;
 						cin >> pos1;
 						cin >> pos2;
-						int oldRow = getRow(pos1);
-						int oldCol = getCol(pos1);
-						int newRow = getRow(pos2);
-						int newCol = getCol(pos2);
+						oldRow = getRow(pos1);
+						oldCol = getCol(pos1);
+						newRow = getRow(pos2);
+						newCol = getCol(pos2);
+						moveCheck = hm->movePiece(oldRow,oldCol,newRow,newCol);
 					}
 					cout << "Player 2 has moved." << endl;
 				}

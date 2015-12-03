@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Computer::Computer(int playerID, int level, Board *b): Player(0, playerID, 0, b, false){
+Computer::Computer(int playerID, int level, Board *b): Player(0, playerID, 1, b, false){
 	this->level = level;
 }
 

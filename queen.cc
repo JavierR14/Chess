@@ -57,8 +57,8 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 		}
 	}
 	if((row1 > row2) && (col2 < col1)) { //upwards left
-		int i = row1;
-		int z = col1;
+		int i = row1-1;
+		int z = col1-1;
 		
 		while(true){
 			if((i==row2) && (z==col2)){
@@ -72,9 +72,9 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 		}
 	}
 
-	else if((row2 > row2) && (col2 < col1)) { //downwards left
-		int i = row1;
-		int z = col1;
+	else if((row2 > row1) && (col2 < col1)) { //downwards left
+		int i = row1+1;
+		int z = col1-1;
 	
 		while(true){
 			if((i==row2) && (z==col2)){
@@ -89,8 +89,8 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 	}
 
 	else if((row2 < row1) && (col2 > col1)){
-		int i = row1;
-		int z = col1;
+		int i = row1-1;
+		int z = col1+1;
 
 		while(true){
 			if((i==row2) && (z==col2)){
@@ -105,8 +105,8 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 	}
 
 	else if((row2 > row1) && (col2 > col1)){
-		int i = row1;
-		int z = col1;
+		int i = row1+1;
+		int z = col1+1;
 
 		while(true){
 			if((i==row2) && (z==col2)){

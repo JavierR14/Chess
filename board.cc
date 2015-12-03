@@ -14,7 +14,7 @@ Board::~Board() {
 }
 
 void Board::init(string filename, Controller *gameCtrl) {
-	cout << "filename length: " << filename.length() << endl;
+	//cout << "filename length: " << filename.length() << endl;
 	int player = 1;
 	this->Ctrl = gameCtrl;
 	//clear the board if it's already initialized, (reset or something)
