@@ -3,6 +3,7 @@
 
 #include "controller.h"
 #include "textdisplay.h"
+#include "graphics.h"
 #include "board.h"
 #include "player.h"
 #include "human.h"
@@ -15,6 +16,9 @@ using namespace std;
 
 Controller::Controller() {
 	td = NULL;
+	#ifdef GRAPHICS
+	gd = NULL;
+	#endif
 	board = new Board();
 	p1 = NULL;
 	p2 = NULL;
@@ -24,6 +28,9 @@ Controller::Controller() {
 Controller::~Controller() {
 	delete board;
 	delete td;
+	#ifdef GRAPHICS
+	delete gd;
+	#endif
 	delete p1;
 	delete p2;
 }
@@ -35,6 +42,10 @@ void Controller::askPlayAgain() {
 	if (answer == "Yes") {
 		betweengame = true;
 		delete td;
+		#ifdef GRAPHICS
+		delete gd;
+		gd = new GraphicsDisplay(8);
+		#endif
 		td = new TextDisplay(8);
 		board->init("", this);
 		td->printBoard(cout);
@@ -75,6 +86,11 @@ void Controller::playGame(string filename) {
 	while (cin>>cmd) {
 		if (cmd == "game" && ingame == false) {
 			td = new TextDisplay(8);
+			//cout << "Yo" << endl;
+			#ifdef GRAPHICS
+			gd = new GraphicsDisplay(8);
+			#endif
+			//cout << "dam" << endl;
 			board->init(filename, this);
 			string tempcmd;
 			string tempcmd2;
@@ -89,8 +105,8 @@ void Controller::playGame(string filename) {
 				cin >>tempcmd2;
 			}
 			//determine human or computer for player 1
-			cout << "p1: " << tempcmd << endl;
-			cout << "p2: " << tempcmd << endl;
+			//cout << "p1: " << tempcmd << endl;
+			//cout << "p2: " << tempcmd << endl;
 			if (tempcmd == "human") {
 				p1 = new Human(0, board);
 			} else if (tempcmd == "computer[1]") {
@@ -246,6 +262,7 @@ void Controller::playGame(string filename) {
 			else {
 				string pos1;
 				string pos2;
+				bool moveCheck;
 				//read in location and new location
 				cin >> pos1;
 				cin >> pos2;
@@ -272,23 +289,25 @@ void Controller::playGame(string filename) {
 					Human* hm = dynamic_cast<Human*>(p1);
 					//pc->movePiece();
 					//cout << "FUCK" << endl;
-					while (hm->movePiece(oldRow,oldCol,newRow,newCol) != true) {
-						cout << "Retry with your piece." << endl;
+					moveCheck = hm->movePiece(oldRow,oldCol,newRow,newCol);
+					while (moveCheck != true) {
+						cout << "Invalid Move. Try again" << endl;
 						cin >> pos1;
 						cin >> pos2;
 						int oldRow = getRow(pos1);
 						int oldCol = getCol(pos1);
 						int newRow = getRow(pos2);
 						int newCol = getCol(pos2);
+						hm->movePiece(oldRow,oldCol,newRow,newCol);
 					}
 					cout << "Player 1 has moved." << endl;
 				} else {
-					cout << "STUFF" << endl;
+					//cout << "STUFF" << endl;
 					Human* hm= dynamic_cast<Human*>(p2);
 					//hm->movePiece();
-					bool moveCheck = hm->movePiece(oldRow,oldCol,newRow,newCol);
+					moveCheck = hm->movePiece(oldRow,oldCol,newRow,newCol);
 					while (moveCheck != true) {
-						cout << "Retry with your piece." << endl;
+						cout << "Invalid Move. Try again" << endl;
 						cin >> pos1;
 						cin >> pos2;
 						oldRow = getRow(pos1);
@@ -338,4 +357,7 @@ void Controller::playGame(string filename) {
 
 void Controller::notify(int oldRow, int oldCol, int newRow, int newCol, char c) {
 	td->notify(oldRow, oldCol, newRow, newCol, c);
+	#ifdef GRAPHICS
+	gd->notify(oldRow,oldCol, newRow, newCol, c);
+	#endif
 }

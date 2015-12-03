@@ -16,6 +16,9 @@ class View;
 
 class Controller {
 	View *td;
+	#ifdef GRAPHICS
+	View *gd;
+	#endif
 	Board *board;
 	Player *p1;
 	Player *p2;
