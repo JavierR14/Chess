@@ -8,7 +8,7 @@ Player::Player(int gamesWon, int id, int numKings, Board *b, bool Human):
 	gamesWon(gamesWon), id(id), numKings(numKings), b(b), human(human){}
 
 bool Player::isHuman(){
-	return this->Human;
+	return this->human;
 }
 
 void Player::draw(){
@@ -28,7 +28,7 @@ int Player::getKings(){
 }
 
 int Player::playerID(){
-	return this->ID;
+	return this->id;
 }
 
 void Player::decKings(){
@@ -44,7 +44,7 @@ void Player::setKing(){
 		for(int j=0; i<8; j++){
 			if((b->getPiece(i,j)->pieceID() == 'K') ||
 				(b->getPiece(i,j)->pieceID() =='k')){
-				if(b->getPiece(i,j)->getOwner() == playerID()){
+				if(b->getPiece(i,j)->getOwner() == this->playerID()){
 					this->kingRow=i;
 					this->kingCol=j;
 					return;

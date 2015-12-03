@@ -1,8 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+#include "board.h"
 
-class Board;
+using namespace std;
 
+//class Board;
 
 class Player {
 	float gamesWon;
