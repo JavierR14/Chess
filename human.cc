@@ -8,14 +8,14 @@ using namespace std;
 Human::Human(int playerID, Board *b): Player(0, playerID, 0, b, true) {}
 
 bool Human::movePiece(int row1, int col1, int row2, int col2){
-	cout <<  "moving the piece" << endl;
+	//cout <<  "moving the piece" << endl;
 	if(b->getPiece(row1, col1)->getOwner() != this->playerID()){
-		cout << "You do not own this piece." << endl;
+	//	cout << "You do not own this piece." << endl;
 		return false;
 	}
-	cout <<"its your piece" <<endl;
+	//cout <<"its your piece" <<endl;
 	if(b->getPiece(row1, col1)->makeMove(row1, col1, row2, col2) == true){
-			cout << "making the move" << endl;
+	//		cout << "making the move" << endl;
 		if((b->getPiece(row1, col1)->pieceID() == 'k') ||
 			(b->getPiece(row1, col1)->pieceID() == 'K')){
 				this->kingCol = col2;
@@ -45,49 +45,49 @@ bool Human::isCheckmate(int row, int col){
 	if(isCheck(row, col) == true){
 		int check=0;
 		int availMoves =0;
-		if(b->getPiece(i,j)->checkMove(row, col, row+1, col) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row+1, col) == true){
 			availMoves++;
 			 if(isCheck(row+1, col) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row-1, col) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row-1, col) == true){
 			availMoves++;
 			if(isCheck(row-1, col) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row, col-1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row, col-1) == true){
 			availMoves++;
 			if(isCheck(row, col-1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row, col+1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row, col+1) == true){
 			availMoves++;
 			if(isCheck(row, col+1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row-1, col-1) ==true){
+		if(b->getPiece(row,col)->checkMove(row, col, row-1, col-1) ==true){
 			availMoves++;
 			if(isCheck(row-1, col-1) == true){
 				check++;
 			}		
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row-1, col+1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row-1, col+1) == true){
 			availMoves++;
 			if(isCheck(row-1, col+1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row+1, col-1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row+1, col-1) == true){
 			availMoves++;
 			if(isCheck(row+1, col-1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row+1, col+1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row+1, col+1) == true){
 			availMoves++;
 			if(isCheck(row+1, col+1) == true){
 				check++;

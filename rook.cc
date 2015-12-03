@@ -10,7 +10,7 @@ Rook::Rook(int row, int col,int owner, Board *b): Piece(row,col,owner,b) {}
 
 bool Rook::checkMove(int row1, int col1, int row2, int col2){
 	if(row2 < 0 || row2>7 || col2 <0 || col2 > 7){
-		cout << "You are moving off the board!" << endl;
+	//	cout << "You are moving off the board!" << endl;
 		return false;
 	}
 	if(b->getPiece(row2, col2) !=NULL){
@@ -25,14 +25,14 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 	// now that those cases are checked, check the path of the move
 
 	if((this->getRow() != row2) && (this->getCol() != col2)){
-		cout << "Rook can only move forwards and sideways." << endl;
+		//cout << "Rook can only move forwards and sideways." << endl;
 		return false;
 	}
 	if(this->getRow() == row2){
 		if(this->getCol() > col2){
 			for(int i = this->getCol(); i > col2; i--){
 				if(b->getPiece(row2, i) != NULL){
-					cout << "Rook cannot jump over pieces." << endl;
+				//	cout << "Rook cannot jump over pieces." << endl;
 					return false;
 				}
 			}
@@ -40,7 +40,7 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 		else if (this->getCol() < col2){
 			for(int i = this->getCol(); i < col2; i++){
 				if(b->getPiece(row2, i) !=NULL){
-					cout << "Rook cannot jump over pieces." << endl;
+				//	cout << "Rook cannot jump over pieces." << endl;
 					return false;
 				}
 			}
@@ -50,7 +50,7 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 		if(this->getRow() > row2){
 			for(int i = this->getRow(); i > row2; i--){
 				if(b->getPiece(i, col2)!= NULL){
-					cout << "Rook cannot jump over pieces." << endl;
+				//	cout << "Rook cannot jump over pieces." << endl;
 					return false;
 				}
 			}
@@ -58,7 +58,7 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 		else if(this->getRow() < row2){
 			for(int i= this->getRow(); i < row2; i++){
 				if(b->getPiece(i, col2) !=NULL){
-					cout << "Rook cannot jump over pieces." << endl;
+				//	cout << "Rook cannot jump over pieces." << endl;
 					return false;
 				}
 			}

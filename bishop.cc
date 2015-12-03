@@ -9,17 +9,17 @@ Bishop::Bishop(int row, int col, int owner, Board *b): Piece(row, col, owner, b)
 
 bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 	if(row2>7 || row2 <0 || col2>7 || col2 < 0){
-		cout << "You are moving off the board!" << endl;
+		//cout << "You are moving off the board!" << endl;
 		return false;
 	}
 	if(b->getPiece(row2,col2) !=NULL){
 		if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
-			cout << "You currently occupy this space." << endl;
+			//cout << "You currently occupy this space." << endl;
 			return false;
 		}
 	} 
 	if((row1 == row2) && (col1 == col2)){
-		cout << "You haven't moved anywhere." << endl;
+		//cout << "You haven't moved anywhere." << endl;
 		return false;
 	}
 	
@@ -27,19 +27,19 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 
 	
 	if(abs(row1-row2) != abs(col1-col2)){
-		cout << "Bishops must move diagonally." << endl;
+		//cout << "Bishops must move diagonally." << endl;
 		return false;
 	}
 
 	if((row1 > row2) && (col2 < col1)) { //upwards left
-		int i = row1;
-		int z = col1;
+		int i = row1-1;
+		int z = col1-1;
 		
 		while(true){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->isOccupied(i, z) == true){
+			if(b->getPiece(i,z) !=NULL){
 				return false;
 			}
 			i--;
@@ -47,15 +47,15 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 			}
 		}
 
-	else if((row2 > row2) && (col2 < col1)) { //downwards left
-		int i = row1;
-		int z = col1;
+	else if((row2 > row1) && (col2 < col1)) { //downwards left
+		int i = row1+1;
+		int z = col1-1;
 	
 		while(true){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->isOccupied(i, z)){
+			if(b->getPiece(i,z) != NULL){
 				return false;
 			}
 			i++;
@@ -64,14 +64,14 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 	}
 
 	else if((row2 < row1) && (col2 > col1)){
-		int i = row1;
-		int z = col1;
+		int i = row1-1;
+		int z = col1+1;
 
 		while(true){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->isOccupied(i,z)){
+			if(b->getPiece(i,z) !=NULL){
 				return false;
 			}
 			i--;
@@ -80,14 +80,14 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 	}
 
 	else if((row2 > row1) && (col2 > col1)){
-		int i = row1;
-		int z = col1;
+		int i = row1+1;
+		int z = col1+1;
 
 		while(true){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->isOccupied(i, z)){
+			if(b->getPiece(i,z) != NULL){
 				return false;
 			}
 			i++;

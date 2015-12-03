@@ -229,7 +229,7 @@ void Controller::playGame(string filename) {
 		}
 		//MOVE--------------------------------------------------------
 		else if (cmd == "move") {
-			cout << "ENTERED MOVE" << endl;
+			//cout << "ENTERED MOVE" << endl;
 			ingame = true;
 			betweengame = false;
 			if (board->getCurrentPlayer() == "P1" && p1->isHuman()== false) {
@@ -248,7 +248,7 @@ void Controller::playGame(string filename) {
 				//read in location and new location
 				cin >> pos1;
 				cin >> pos2;
-				cout << "BEFORE" << endl;
+				//cout << "BEFORE" << endl;
 				int oldRow = getRow(pos1);
 				int oldCol = getCol(pos1);
 				//check valid input for pos1
@@ -270,7 +270,7 @@ void Controller::playGame(string filename) {
 				if (board->getCurrentPlayer() == "P1") {
 					Human* hm = dynamic_cast<Human*>(p1);
 					//pc->movePiece();
-					cout << "FUCK" << endl;
+					//cout << "FUCK" << endl;
 					while (hm->movePiece(oldRow,oldCol,newRow,newCol) != true) {
 						cout << "Retry with your piece." << endl;
 						cin >> pos1;
@@ -282,7 +282,8 @@ void Controller::playGame(string filename) {
 					}
 					cout << "Player 1 has moved." << endl;
 				} else {
-					Human* hm = dynamic_cast<Human*>(p1);
+					cout << "STUFF" << endl;
+					Human* hm= dynamic_cast<Human*>(p2);
 					//hm->movePiece();
 					while (hm->movePiece(oldRow,oldCol,newRow,newCol) != true) {
 						cout << "Retry with your piece." << endl;
@@ -295,14 +296,10 @@ void Controller::playGame(string filename) {
 					}
 					cout << "Player 2 has moved." << endl;
 				}
-				if (board->getCurrentPlayer() == "P1") {
-					board->setCurrentPlayer('B');
-				} else {
-					board->setCurrentPlayer('W');
-				}
 			}
 
 			td->printBoard(cout);
+
 			//graphics display
 			//IsCheckmate and shit like that....call it
 			if (p1->isCheckmate(p2->kingRow, p2->kingCol) == true) {
@@ -310,7 +307,7 @@ void Controller::playGame(string filename) {
 				askPlayAgain();
 				continue;
 			}
-			cout << "YO" << endl;
+			//cout << "YO" << endl;
 			if (p2->isCheckmate(p1->kingRow, p1->kingCol) == true) {
 				cout << "Checkmate. Player 2 Wins" << endl;
 				askPlayAgain();
@@ -322,6 +319,13 @@ void Controller::playGame(string filename) {
 			if (p2->isCheck(p1->kingRow, p2->kingCol) == true) {
 				cout << "Player 1 is in Check." << endl;
 			}
+
+			if (board->getCurrentPlayer() == "P1") {
+					board->setCurrentPlayer('B');
+				} else {
+					board->setCurrentPlayer('W');
+			}
+			cout << board->getCurrentPlayer() << "'s Turn" << endl;
 		}
 	}
 	//print score once CTRL-D has been pressed, not inputting anymore

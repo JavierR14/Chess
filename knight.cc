@@ -11,12 +11,12 @@ Knight::Knight(int row, int col, int owner, Board *b): Piece(row, col,owner,b) {
 bool Knight::checkMove(int row1, int col1, int row2, int col2){
 	if(b->getPiece(row2, col2) !=NULL){
 		if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
-			cout << "You currently occupy this space." << endl;
+			//cout << "You currently occupy this space." << endl;
 			return false;
 		} //attacking your own piece
 	}
 	if((row1 == row2) && (col1 == col2)){
-		cout << "You haven't moved anywhere." << endl;
+		//cout << "You haven't moved anywhere." << endl;
 		return false;
 	} //you can't move to the same spot
 	

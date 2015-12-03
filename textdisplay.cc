@@ -62,11 +62,13 @@ void TextDisplay::notify(int oldRow, int oldCol, int newRow, int newCol, char c)
 
 void TextDisplay::printBoard(ostream &out) const {
 	for (int i=0; i < this->bSize; ++i) {
+		out << (8-i) << " ";
 		for (int j=0; j < this->bSize; ++j) {
 			out << bDisplay[i][j];
 		}
 		out << endl;
 	}
+	out << "  " << "a" << "b" << "c" << "d" << "e" << "f" << "g" << "h" << endl;
 }
 
 void TextDisplay::printScore(float p1Score, float p2Score) const {
