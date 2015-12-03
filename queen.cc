@@ -8,9 +8,11 @@ using namespace std;
 Queen::Queen(int row, int col, int owner, Board *b): Piece(row, col, owner, b) {}
 
 bool Queen::checkMove(int row1, int col1, int row2, int col2){
-	if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
-		cout << "You currently occupy this space." << endl;
-		return false;
+	if(b->getPiece(row2, col2) !=NULL){
+		if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
+			cout << "You currently occupy this space." << endl;
+			return false;
+		}
 	} 
 	if((row1 == row2) && (col1 == col2)){
 		cout << "You haven't moved anywhere." << endl;
@@ -22,7 +24,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 	if(row1 == row2){
 		if(col1 > col2){
 			for(int i=col1-1; i > col2; i--){
-				if(b->getPiece(row2, i)){
+				if(b->getPiece(row2, i) !=NULL){
 					cout << "Queen cannot jump over pieces." << endl;
 					return false;
 				}
@@ -30,7 +32,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 		}
 		else if(col1 < col2){
 			for(int i=col1+1; i<col2; i++){
-				if(b->getPiece(row2, i)){
+				if(b->getPiece(row2, i) !=NULL){
 					cout << "Queen cannot jump over pieces." << endl;
 					return false;
 				}
@@ -39,7 +41,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 	} else if(col1 == col2){
 		if(row1 > row2){
 			for(int i=row1-1; i>row2; i--){
-				if(b->getPiece(i, col2)){
+				if(b->getPiece(i, col2) !=NULL){
 					cout << "Queen cannot jump over pieces." << endl;
 					return false;
 				}
@@ -47,7 +49,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 		}
 		else if(row1 < row2){
 			for(int i=row1+1; i<row2; i++){
-				if(b->getPiece(i, col2)){
+				if(b->getPiece(i, col2) !=NULL){
 					cout << "Queen cannot jump over pieces." << endl;
 					return false;
 				}
@@ -62,7 +64,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z)){
+			if(b->getPiece(i, z) !=NULL){
 				return false;
 			}
 			i--;
@@ -78,7 +80,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z)){
+			if(b->getPiece(i, z)!=NULL){
 				return false;
 			}
 			i++;
@@ -94,7 +96,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z)){
+			if(b->getPiece(i, z)!=NULL){
 				return false;
 			}
 			i--;
@@ -110,7 +112,7 @@ bool Queen::checkMove(int row1, int col1, int row2, int col2){
 			if((i==row2) && (z==col2)){
 				break;
 			}
-			if(b->getPiece(i, z)){
+			if(b->getPiece(i, z)!=NULL){
 				return false;
 			}
 			i++;
