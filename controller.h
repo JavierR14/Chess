@@ -2,11 +2,11 @@
 #define CONTROLLER_H
 #include <iostream>
 #include <string>
-#include "board.h"
-#include "view.h"
-#include "player.h"
-#include "human.h"
-#include "computer.h"
+//#include "board.h"
+//#include "view.h"
+//#include "player.h"
+//#include "human.h"
+//#include "computer.h"
 
 class Player;
 class Human;

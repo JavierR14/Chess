@@ -1,13 +1,13 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "piece.h"
-#include "controller.h"
 #include "pawn.h"
 #include "rook.h"
 #include "knight.h"
 #include "bishop.h"
 #include "queen.h"
 #include "king.h"
+#include "controller.h"
 #include <iostream>
 #include <string>
 
