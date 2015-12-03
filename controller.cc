@@ -298,7 +298,7 @@ void Controller::playGame(string filename) {
 						int oldCol = getCol(pos1);
 						int newRow = getRow(pos2);
 						int newCol = getCol(pos2);
-						hm->movePiece(oldRow,oldCol,newRow,newCol);
+						moveCheck = hm->movePiece(oldRow,oldCol,newRow,newCol);
 					}
 					cout << "Player 1 has moved." << endl;
 				} else {
@@ -324,21 +324,22 @@ void Controller::playGame(string filename) {
 
 			//graphics display
 			//IsCheckmate and shit like that....call it
-			if (p1->isCheckmate(p2->kingRow, p2->kingCol) == true) {
+			if (p1->isCheckmate(p1->kingRow, p1->kingCol) == true) {
 				cout << "Checkmate. Player 1 Wins" << endl;
 				askPlayAgain();
 				continue;
 			}
 			//cout << "YO" << endl;
-			if (p2->isCheckmate(p1->kingRow, p1->kingCol) == true) {
+			if (p2->isCheckmate(p2->kingRow, p2->kingCol) == true) {
 				cout << "Checkmate. Player 2 Wins" << endl;
 				askPlayAgain();
 				continue;
 			}
-			if (p1->isCheck(p2->kingRow, p2->kingCol) == true) {
+			//cout << "YO2" << endl;
+			if (p1->isCheck(p1->kingRow, p1->kingCol) == true) {
 				cout << "Player 2 is in Check." << endl;
 			}
-			if (p2->isCheck(p1->kingRow, p2->kingCol) == true) {
+			if (p2->isCheck(p2->kingRow, p2->kingCol) == true) {
 				cout << "Player 1 is in Check." << endl;
 			}
 

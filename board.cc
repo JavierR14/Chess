@@ -163,8 +163,10 @@ bool Board::removePiece(int row, int col) {
 }
 
 void Board::addPiece(int row, int col, char p) {
-	delete theBoard[row][col];
-	theBoard[row][col] = NULL;
+	if (theBoard[row][col] != NULL) {
+		delete theBoard[row][col];
+		theBoard[row][col] = NULL;
+	}
 	//White Rook
 	if (p == 'R') {
 		theBoard[row][col] = new Rook(row, col, 0, this);

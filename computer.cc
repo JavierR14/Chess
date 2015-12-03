@@ -232,12 +232,12 @@ bool Computer::movePiece(){
 				(b->getPiece(i,j)->getOwner() == this->playerID())){
 				for(int x=0; x<8; x++){
 					for(int y=0; y<8; y++){
-						if((skip==0)
+						if((skip<=0)
 							&& (b->getPiece(i,j)->makeMove(i,j,x,y))){
 							b->updateMove(i,j,x,y);
 							return true;
 						}
-						if(b->getPiece(i,j)->makeMove(i,j,x,y)){
+						if(b->getPiece(i,j)->checkMove(i,j,x,y)){
 							skip--;
 						}
 					}
@@ -267,19 +267,34 @@ bool Computer::movePiece(){
 						(b->getPiece(i,j)->checkMove(x,y,this->kingRow, this->kingCol))){
 							b->getPiece(i,j)->makeMove(i,j,x,y);
 							b->updateMove(i,j,x,y);
+							count =2;
 							return true;
 						}	
-						if(count==1){
-							if(b->getPiece(i,j)->makeMove(i,j,x,y)){
-								b->updateMove(i,j,x,y);
-								count =2;
-								return true;
-							}
+						}	
+					}
+				}
+			}
+		}
+		if(count !=2){
+		for(int i=0; i<8; i++){
+		for(int j=0; j<8; j++){
+			if((b->getPiece(i,j) !=NULL) && 
+				(b->getPiece(i,j)->getOwner() == this->playerID())){
+				for(int x=0; x<8; x++){
+					for(int y=0; y<8; y++){
+						if((skip<=0)
+							&& (b->getPiece(i,j)->makeMove(i,j,x,y))){
+							b->updateMove(i,j,x,y);
+							return true;
+						}
+						if(b->getPiece(i,j)->checkMove(i,j,x,y)){
+							skip--;
 						}
 					}
 				}
-				}
 			}
+		}
+	}  
 		}
 	count++;
 	}				
@@ -294,62 +309,65 @@ bool Computer::movePiece(){
 bool Computer::isCheck(int row, int col){
 	for(int i =0; i<8; i++){
 		for(int j=0; j<8; j++){
+			if(b->getPiece(i,j) != NULL){
 			if(b->getPiece(i,j)->getOwner() == this->playerID()){
 				if(b->getPiece(i,j)->checkMove(i, j, row, col) == true){
 					return true;
 				}
 			}
 		}
+		}
 	}
+	return false;
 }
 	
 bool Computer::isCheckmate(int row, int col){
 	if(isCheck(row, col) == true){
 		int check=0;
 		int availMoves =0;
-		if(b->getPiece(i,j)->checkMove(row, col, row+1, col) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row+1, col) == true){
 			availMoves++;
 			 if(isCheck(row+1, col) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row-1, col) == true){
+		if(b->getPiece(row, col)->checkMove(row, col, row-1, col) == true){
 			availMoves++;
 			if(isCheck(row-1, col) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row, col-1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row, col-1) == true){
 			availMoves++;
 			if(isCheck(row, col-1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row, col+1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row, col+1) == true){
 			availMoves++;
 			if(isCheck(row, col+1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row-1, col-1) ==true){
+		if(b->getPiece(row,col)->checkMove(row, col, row-1, col-1) ==true){
 			availMoves++;
 			if(isCheck(row-1, col-1) == true){
 				check++;
 			}		
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row-1, col+1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row-1, col+1) == true){
 			availMoves++;
 			if(isCheck(row-1, col+1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row+1, col-1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row+1, col-1) == true){
 			availMoves++;
 			if(isCheck(row+1, col-1) == true){
 				check++;
 			}
 		}
-		if(b->getPiece(i,j)->checkMove(row, col, row+1, col+1) == true){
+		if(b->getPiece(row,col)->checkMove(row, col, row+1, col+1) == true){
 			availMoves++;
 			if(isCheck(row+1, col+1) == true){
 				check++;
@@ -362,7 +380,6 @@ bool Computer::isCheckmate(int row, int col){
 			return false;
 		}
 	}
-	
 	return false;
 }
 

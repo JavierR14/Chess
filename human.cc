@@ -43,6 +43,7 @@ bool Human::isCheck(int row, int col){
 			}
 		}
 	}
+	return false;
 }
 	
 bool Human::isCheckmate(int row, int col){
