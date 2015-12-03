@@ -9,11 +9,12 @@ using namespace std;
 class Board;
 
 class Piece {
-public:
+	protected:
 	int row;
 	int col;
 	int owner;
 	Board *b;
+	public:
 	Piece(int row, int col, int owner, Board *b);
 //	virtual ~Piece();
 	virtual bool checkMove(int row1, int col1, int row2, int col2);

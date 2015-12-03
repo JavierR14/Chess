@@ -1,13 +1,11 @@
-#include "human.h"
-#include "board.h"
+
 #include <cstdlib>
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-Human::Human(int playerID, Board *b): 
-		Player(0, playerID, 0, b, true) {}
+Human::Human(int playerID, Board *b): Player(0, playerID, 0, b, true) {}
 
 bool Human::movePiece(int row1, int col1, int row2, int col2){
 	if(b->getPiece(row1, col1)->getOwner() != this->playerID()){
@@ -30,9 +28,10 @@ bool Human::movePiece(int row1, int col1, int row2, int col2){
 bool Human::isCheck(int row, int col){
 	for(int i =0; i<8; i++){
 		for(int j=0; j<8; j++){
-			if(b->theBoard[i][j].getOwner() == this->playerID()){
-				if(b->theBoard[i][j].checkMove(i, j, row, col) == true){
+			if(b->theBoard[i][j]->getOwner() == this->playerID()){
+				if(b->theBoard[i][j]->checkMove(i, j, row, col) == true){
 					return true;
+				}
 			}
 		}
 	}

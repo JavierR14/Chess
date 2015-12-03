@@ -6,12 +6,12 @@ class Board;
 
 class Player {
 	float gamesWon;
-	int ID;
+	int id;
 	int numKings;
-	bool Human;
-	Board *b;
+	bool human;
 	public:
-	Player(int gamesWon, int playerID, int numKings, Board *b, bool Human);
+	Board *b;
+	Player(int gamesWon, int id, int numKings, Board *b, bool human);
 	bool isHuman();
 	int getKings();
 	int playerID();

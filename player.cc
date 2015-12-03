@@ -4,22 +4,22 @@
 #include <iostream>
 
 
-Player::Player(int gamesWon, int ID, int numKings, bool Human):
-	gamesWon(gamesWon), ID(ID), numKings(numKings), b(b), isHuman(isHuman){}
+Player::Player(int gamesWon, int id, int numKings, Board *b, bool Human):
+	gamesWon(gamesWon), id(id), numKings(numKings), b(b), human(human){}
 
 bool Player::isHuman(){
 	return this->Human;
 }
 
-void draw(){
+void Player::draw(){
 	this->gamesWon += 0.5;
 }
 
-void won(){
+void Player::won(){
 	this->gamesWon += 1;
 }
 
-float getGamesWon(){
+float Player::getGamesWon(){
 	return this->gamesWon;
 }
 
