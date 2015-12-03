@@ -14,6 +14,7 @@ Board::~Board() {
 }
 
 void Board::init(string filename, Controller *gameCtrl) {
+	cout << "filename length: " << filename.length() << endl;
 	int player = 1;
 	this->Ctrl = gameCtrl;
 	//clear the board if it's already initialized, (reset or something)
@@ -81,7 +82,7 @@ void Board::init(string filename, Controller *gameCtrl) {
 			for (int j = 0; j < gridsize; ++j) {
 				input.get(c);
 				//check for end of line
-				if (c == '\0') {
+				if (c == '\n') {
 					input.get(c);
 				}
 				//White Rook
@@ -144,6 +145,9 @@ void Board::init(string filename, Controller *gameCtrl) {
 			}
 		}
 		input.get(c);
+		if (c == '\n') {
+			input.get(c);
+		}
 		setCurrentPlayer(c); 
 	}
 }

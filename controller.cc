@@ -74,10 +74,12 @@ void Controller::playGame(string filename) {
 	betweengame = false;
 	while (cin>>cmd) {
 		if (cmd == "game" && ingame == false) {
+			td = new TextDisplay(8);
+			board->init(filename, this);
 			string tempcmd;
 			string tempcmd2;
-			delete p1;
-			delete p2;
+			//delete p1;
+			//delete p2;
 			//valid input for first word
 			while (tempcmd!="human" && tempcmd!="computer[1]" && tempcmd!="computer[2]" && tempcmd!="computer[3]" && tempcmd!="computer[4]") {
 				cin >>tempcmd;
@@ -87,6 +89,8 @@ void Controller::playGame(string filename) {
 				cin >>tempcmd2;
 			}
 			//determine human or computer for player 1
+			cout << "p1: " << tempcmd << endl;
+			cout << "p2: " << tempcmd << endl;
 			if (tempcmd == "human") {
 				p1 = new Human(0, board);
 			} else if (tempcmd == "computer[1]") {
@@ -111,12 +115,16 @@ void Controller::playGame(string filename) {
 				p2 = new Computer(1, 4, board);
 			}
 			//set up initial board  -- IMPORTANT
-			delete td;
-			td = new TextDisplay(8);
-			board->init(filename, this);
+			//delete td;
+			//cout << "LOL" << endl;
 			p1->setKing();
+			//cout << "Piece at 0,0: " << board->getPieceID(0,0) << endl;
+			//cout << "Piece at 8,8: " << board->getPieceID(7,7) << endl;
+			//cout << "Piece at 4,4: " << board->getPiece(0,0)->pieceID() << endl;
 			p2->setKing();
+			//cout << "LMAO" << endl;
 			td->printBoard(cout);
+			cout << board->getCurrentPlayer() << "'s Turn" << endl;
 		}
 		//Resign -------------------------------------------------------
 		else if (cmd == "resign") {
@@ -221,6 +229,7 @@ void Controller::playGame(string filename) {
 		}
 		//MOVE--------------------------------------------------------
 		else if (cmd == "move") {
+			cout << "ENTERED MOVE" << endl;
 			ingame = true;
 			betweengame = false;
 			if (board->getCurrentPlayer() == "P1" && p1->isHuman()== false) {
@@ -239,6 +248,7 @@ void Controller::playGame(string filename) {
 				//read in location and new location
 				cin >> pos1;
 				cin >> pos2;
+				cout << "BEFORE" << endl;
 				int oldRow = getRow(pos1);
 				int oldCol = getCol(pos1);
 				//check valid input for pos1
@@ -260,6 +270,7 @@ void Controller::playGame(string filename) {
 				if (board->getCurrentPlayer() == "P1") {
 					Human* hm = dynamic_cast<Human*>(p1);
 					//pc->movePiece();
+					cout << "FUCK" << endl;
 					while (hm->movePiece(oldRow,oldCol,newRow,newCol) != true) {
 						cout << "Retry with your piece." << endl;
 						cin >> pos1;
@@ -283,6 +294,11 @@ void Controller::playGame(string filename) {
 						int newCol = getCol(pos2);
 					}
 					cout << "Player 2 has moved." << endl;
+				}
+				if (board->getCurrentPlayer() == "P1") {
+					board->setCurrentPlayer('B');
+				} else {
+					board->setCurrentPlayer('W');
 				}
 			}
 

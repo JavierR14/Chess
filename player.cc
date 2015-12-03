@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-Player::Player(int gamesWon, int id, int numKings, Board *b, bool Human):
+Player::Player(int gamesWon, int id, int numKings, Board *b, bool human):
 	gamesWon(gamesWon), id(id), numKings(numKings), b(b), human(human){}
 
 bool Player::isHuman(){
@@ -41,13 +41,19 @@ void Player::incKings(){
 
 void Player::setKing(){
 	for(int i =0; i<8;i++){
-		for(int j=0; i<8; j++){
-			if((b->getPiece(i,j)->pieceID() == 'K') ||
-				(b->getPiece(i,j)->pieceID() =='k')){
-				if(b->getPiece(i,j)->getOwner() == this->playerID()){
-					this->kingRow=i;
-					this->kingCol=j;
-					return;
+		for(int j=0; j<8; j++){
+			if(b->getPiece(i,j) != NULL){
+			//	cout << "row: " << i << endl;
+			//	cout << "step1" << endl;
+			//	cout << "piece id: " << b->getPiece(i,j)->pieceID() << endl;
+				if((b->getPiece(i,j)->pieceID() == 'K') ||
+					(b->getPiece(i,j)->pieceID() =='k')){
+			//		cout <<"step2"<<endl;
+					if(b->getPiece(i,j)->getOwner() == this->playerID()){
+			//			cout<<"step3"<<endl;
+						this->kingRow=i;
+						this->kingCol=j;
+					}	
 				}
 			}
 		}

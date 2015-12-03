@@ -8,12 +8,14 @@ using namespace std;
 Human::Human(int playerID, Board *b): Player(0, playerID, 0, b, true) {}
 
 bool Human::movePiece(int row1, int col1, int row2, int col2){
+	cout <<  "moving the piece" << endl;
 	if(b->getPiece(row1, col1)->getOwner() != this->playerID()){
 		cout << "You do not own this piece." << endl;
 		return false;
 	}
-	
+	cout <<"its your piece" <<endl;
 	if(b->getPiece(row1, col1)->makeMove(row1, col1, row2, col2) == true){
+			cout << "making the move" << endl;
 		if((b->getPiece(row1, col1)->pieceID() == 'k') ||
 			(b->getPiece(row1, col1)->pieceID() == 'K')){
 				this->kingCol = col2;
