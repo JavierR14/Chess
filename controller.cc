@@ -310,6 +310,7 @@ void Controller::playGame(string filename) {
 				askPlayAgain();
 				continue;
 			}
+			cout << "YO" << endl;
 			if (p2->isCheckmate(p1->kingRow, p1->kingCol) == true) {
 				cout << "Checkmate. Player 2 Wins" << endl;
 				askPlayAgain();

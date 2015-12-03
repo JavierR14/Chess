@@ -39,7 +39,7 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 		}
 		else if (this->getCol() < col2){
 			for(int i = this->getCol(); i < col2; i++){
-				if(b->getPiece(row2, i !=NULL)){
+				if(b->getPiece(row2, i) !=NULL){
 					cout << "Rook cannot jump over pieces." << endl;
 					return false;
 				}
@@ -49,7 +49,7 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 	else if(this->getCol() == col2){
 		if(this->getRow() > row2){
 			for(int i = this->getRow(); i > row2; i--){
-				if(b->getPiece(i, col2 != NULL)){
+				if(b->getPiece(i, col2)!= NULL){
 					cout << "Rook cannot jump over pieces." << endl;
 					return false;
 				}
@@ -57,7 +57,7 @@ bool Rook::checkMove(int row1, int col1, int row2, int col2){
 		}
 		else if(this->getRow() < row2){
 			for(int i= this->getRow(); i < row2; i++){
-				if(b->getPiece(i, col2 !=NULL)){
+				if(b->getPiece(i, col2) !=NULL){
 					cout << "Rook cannot jump over pieces." << endl;
 					return false;
 				}
