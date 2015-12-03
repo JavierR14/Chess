@@ -140,7 +140,7 @@ bool Computer::movePiece(){
 								moves++;
 							}
 							b->getPiece(i,z)->makeMove(i,z,i-moves+1,z);
-							b->updatemove(i,z,i-moves+1,z);
+							b->updateMove(i,z,i-moves+1,z);
 							return true;
 						}
 					}
@@ -226,9 +226,10 @@ bool Computer::movePiece(){
 bool Computer::isCheck(int row, int col){
 	for(int i =0; i<8; i++){
 		for(int j=0; j<8; j++){
-			if(b->theBoard[i][j].getOwner() == this->playerID()){
-				if(b->theBoard[i][j].checkMove(i, j, row, col) == true){
+			if(b->theBoard[i][j]->getOwner() == this->playerID()){
+				if(b->theBoard[i][j]->checkMove(i, j, row, col) == true){
 					return true;
+				}
 			}
 		}
 	}
@@ -292,6 +293,7 @@ bool Computer::isCheckmate(int row, int col){
 			return false;
 		}
 	}
+	
 	return false;
 }
 
