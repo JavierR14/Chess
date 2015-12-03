@@ -12,7 +12,7 @@ bool Bishop::checkMove(int row1, int col1, int row2, int col2){
 		cout << "You are moving off the board!" << endl;
 		return false;
 	}
-	if(b->getPiece(row2, col2).getOwner() == this->getOwner()){
+	if(b->getPiece(row2, col2)->getOwner() == this->getOwner()){
 		cout << "You currently occupy this space." << endl;
 		return false;
 	} 
