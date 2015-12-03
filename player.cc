@@ -49,7 +49,7 @@ void Player::setKing(){
 				if((b->getPiece(i,j)->pieceID() == 'K') ||
 					(b->getPiece(i,j)->pieceID() =='k')){
 			//		cout <<"step2"<<endl;
-					if(b->getPiece(i,j)->getOwner() == this->playerID()){
+					if(b->getPiece(i,j)->getOwner() != this->playerID()){
 			//			cout<<"step3"<<endl;
 						this->kingRow=i;
 						this->kingCol=j;

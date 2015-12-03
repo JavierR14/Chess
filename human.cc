@@ -9,6 +9,9 @@ Human::Human(int playerID, Board *b): Player(0, playerID, 1, b, true) {}
 
 bool Human::movePiece(int row1, int col1, int row2, int col2){
 	//cout <<  "moving the piece" << endl;
+	if(b->getPiece(row1, col1) == NULL){
+		return false;
+	}
 	if(b->getPiece(row1, col1)->getOwner() != this->playerID()){
 	//	cout << "You do not own this piece." << endl;
 		return false;
